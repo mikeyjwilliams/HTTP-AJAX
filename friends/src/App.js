@@ -16,7 +16,6 @@ class App extends React.Component {
     axios
       .get(`http://localhost:5000/friends`)
       .then(response => {
-        console.log(response);
         this.setState({
           friends: response.data
         });
@@ -27,7 +26,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('STATE ', this.state.friends);
     return (
       <div className="App">
         <h1>Friends List</h1>
