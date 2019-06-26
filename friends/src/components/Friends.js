@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 
 const Friends = props => {
   const jsClasses = useStyles();
-  console.log(props.friend);
+
   return (
     <Card className={`${jsClasses.card} mdc-card`}>
       <CardContent>
