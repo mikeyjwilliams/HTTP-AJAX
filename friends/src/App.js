@@ -30,6 +30,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Friends List</h1>
+        <Form />
         {this.state.friends.length > 0 ? (
           this.state.friends.map(friend => {
             return <Friends key={friend.id} friend={friend} />;
