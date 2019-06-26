@@ -13,6 +13,12 @@ class Form extends React.Component {
 
   changeHandler = e => {
     console.log(e.target.value);
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
   };
 
   render() {
