@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Friends from './components/Friends';
+import Form from './components/Form';
 
 import './App.css';
 
