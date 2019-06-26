@@ -12,6 +12,18 @@
   margin-right: 5%;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  
+}
+
 .input {
   margin-bottom: 15px;
+  align-self: center;
+}
+
+.age-input {
+  width: inherit;
 }
