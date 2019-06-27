@@ -27,3 +27,8 @@
 .age-input {
   width: inherit;
 }
+
+.submit-button {
+  margin: 0 auto;
+  width: 250px;
+}
