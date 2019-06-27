@@ -36,5 +36,9 @@
 .nav-section {
   display: flex;
   justify-content: flex-end;
+  padding-bottom: 10px;
+}
+.nav {
   margin-right: 25px;
+
 }
