@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link, Route } from 'react-router-dom';
 import Friends from './components/Friends';
 import Form from './components/Form';
 
@@ -35,7 +36,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Friends List</h1>
-        <Form />
+        <div className="nav-section">
+          <Link to="/create">New Friend</Link>
+        </div>
+        <Route
+          path="/create"
+          render={props => <Form {...props} addItem={this.addItem} />}
+        />
         {this.state.friends.length > 0 ? (
           this.state.friends.map(friend => {
             return (
