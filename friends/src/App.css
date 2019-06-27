@@ -32,3 +32,9 @@
   margin: 0 auto;
   width: 250px;
 }
+
+.nav-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 25px;
+}
