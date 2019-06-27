@@ -25,11 +25,14 @@ class Form extends React.Component {
     super(props);
     this.state = {
       name: '',
-      age: 0,
-      email: '',
-      friend: []
+      age: '',
+      email: ''
     };
   }
+
+  submitHandler = e => {
+    e.preventDefault();
+  };
 
   changeHandler = e => {
     console.log(e.target.value);
@@ -43,25 +46,39 @@ class Form extends React.Component {
 
   render() {
     const jsClasses = useStyles;
+    const { name, age, email } = this.state;
     return (
       <Card className={`${jsClasses.card} mdc-card`}>
         <CardContent>
-          <form className="form input">
+          <form className="form input" onSubmit={this.submitHandler}>
             <input
               type="text"
               name="name"
               onChange={this.changeHandler}
               placeholder="Name..."
               className="name-input input"
+              value={name}
             />
 
             <input
               type="number"
-              name="number"
+              name="age"
               onChange={this.changeHandler}
               placeholder="Age..."
               className="age-input input"
+              value={age}
             />
+
+            <input
+              type="email"
+              name="email"
+              onChange={this.changeHandler}
+              placeholder="Email..."
+              className="email-input input"
+              value={email}
+            />
+
+            <button type="submit">Create Friend</button>
           </form>
         </CardContent>
       </Card>
