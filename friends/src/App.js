@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, Route } from 'react-router-dom';
 import Friends from './components/Friends';
 import Form from './components/Form';
+import FriendList from './components/FriendList';
 
 import './App.css';
 
@@ -37,21 +38,25 @@ class App extends React.Component {
       <div className="App">
         <h1>Friends List</h1>
         <div className="nav-section">
-          <Link to="/create">New Friend</Link>
+          <Link to="/" className="nav">
+            Home
+          </Link>
+          <Link to="/create" className="nav">
+            New Friend
+          </Link>
         </div>
+
         <Route
           path="/create"
+          exact
           render={props => <Form {...props} addItem={this.addItem} />}
         />
-        {this.state.friends.length > 0 ? (
-          this.state.friends.map(friend => {
-            return (
-              <Friends key={friend.id} friend={friend} addItem={this.addItem} />
-            );
-          })
-        ) : (
-          <h2>Loading data....</h2>
-        )}
+        <Route
+          path="/"
+          render={props => (
+            <FriendList {...props} friends={this.state.friends} />
+          )}
+        />
       </div>
     );
   }
