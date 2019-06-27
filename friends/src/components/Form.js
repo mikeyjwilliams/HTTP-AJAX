@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   card: {
-    mainWidth: 275
+    minWidth: 275
   },
   bullet: {
     display: 'inline-block',
@@ -24,24 +24,40 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      email: ''
+      item: {
+        name: '',
+        age: '',
+        email: ''
+      }
     };
   }
 
   submitHandler = e => {
     e.preventDefault();
+    this.props.addItem(this.state.item);
+    this.setState({
+      item: {
+        name: '',
+        age: '',
+        email: ''
+      }
+    });
   };
 
   changeHandler = e => {
     console.log(e.target.value);
     const target = e.target;
-    const value = target.value;
-    const name = target.name;
-    this.setState({
-      [name]: value
-    });
+    let value = target.value;
+    let name = target.name;
+    if (name === 'price') {
+      value = parseInt(value, 10);
+    }
+    this.setState(prevState => ({
+      item: {
+        ...prevState.item,
+        [name]: value
+      }
+    }));
   };
 
   render() {
