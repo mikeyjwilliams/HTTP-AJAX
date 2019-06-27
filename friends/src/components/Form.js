@@ -78,7 +78,9 @@ class Form extends React.Component {
               value={email}
             />
 
-            <button type="submit">Create Friend</button>
+            <button type="submit" className="submit-button">
+              Create Friend
+            </button>
           </form>
         </CardContent>
       </Card>
