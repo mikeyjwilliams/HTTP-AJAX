@@ -6,7 +6,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: {
+      friend: {
         name: '',
         age: '',
         email: ''
@@ -16,9 +16,9 @@ class Form extends React.Component {
 
   submitHandler = e => {
     e.preventDefault();
-    this.props.addFriend(this.state.item);
+    this.props.addFriend(this.state.friend);
     this.setState({
-      item: {
+      friend: {
         name: '',
         age: '',
         email: ''
@@ -34,8 +34,8 @@ class Form extends React.Component {
       value = parseInt(value, 10);
     }
     this.setState(prevState => ({
-      item: {
-        ...prevState.item,
+      friend: {
+        ...prevState.friend,
         [name]: value
       }
     }));
