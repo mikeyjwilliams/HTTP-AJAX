@@ -36,11 +36,8 @@ class App extends React.Component {
       .catch(error => console.log(error));
   };
 
-  editFriend = id => {
-    axios
-      .put(`http://localhost:5000/friends/:${id}`)
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
+  editFriend = friends => {
+    console.log(friends);
   };
 
   render() {
@@ -63,7 +60,6 @@ class App extends React.Component {
 
         <Route
           path="/edit/:id"
-          exact
           render={props => (
             <EditFriend {...props} editFriend={this.editFriend} />
           )}
@@ -79,7 +75,7 @@ class App extends React.Component {
             <FriendsList
               {...props}
               friends={friends}
-              saveFriend={this.saveFriend}
+              editFriend={this.editFriend}
             />
           )}
         />
