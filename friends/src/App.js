@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Link, Route } from 'react-router-dom';
-import Friends from './components/Friends';
+import { NavLink, Route } from 'react-router-dom';
+//import Friends from './components/Friends';
 import Form from './components/Form';
-import FriendList from './components/FriendList';
+import FriendsList from './components/FriendsList';
 
 import './App.css';
 
@@ -11,7 +11,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      friends: 0
+      friends: 0,
+      friendList: []
     };
   }
 
@@ -26,10 +27,12 @@ class App extends React.Component {
       });
   }
 
-  addItem = friend => {
+  addFriend = friend => {
     axios
       .post(`http://localhost:5000/friends`, friend)
-      .then(response => console.log(response))
+      .then(response => {
+        this.setState({ friends: response.friend });
+      })
       .catch(error => console.log(error));
   };
 
@@ -38,23 +41,23 @@ class App extends React.Component {
       <div className="App">
         <h1>Friends List</h1>
         <div className="nav-section">
-          <Link to="/" className="nav">
+          <NavLink to="/" className="nav">
             Home
-          </Link>
-          <Link to="/create" className="nav">
+          </NavLink>
+          <NavLink to="/create" className="nav">
             New Friend
-          </Link>
+          </NavLink>
         </div>
 
         <Route
           path="/create"
           exact
-          render={props => <Form {...props} addItem={this.addItem} />}
+          render={props => <Form {...props} addFriend={this.addFriend} />}
         />
         <Route
           path="/"
           render={props => (
-            <FriendList {...props} friends={this.state.friends} />
+            <FriendsList {...props} friends={this.state.friends} />
           )}
         />
       </div>
