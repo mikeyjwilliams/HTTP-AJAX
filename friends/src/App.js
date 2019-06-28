@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { NavLink, Route } from 'react-router-dom';
-//import Friends from './components/Friends';
-import Form from './components/Form';
+
+import AddFriend from './components/AddFriend';
 import FriendsList from './components/FriendsList';
 
 import './App.css';
@@ -11,8 +11,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      friends: 0,
-      friendList: []
+      friends: []
     };
   }
 
@@ -31,9 +30,13 @@ class App extends React.Component {
     axios
       .post(`http://localhost:5000/friends`, friend)
       .then(response => {
-        this.setState({ friends: response.friend });
+        this.setState({ friends: response.data });
       })
       .catch(error => console.log(error));
+  };
+
+  saveFriend = e => {
+    console.log(e.target.value);
   };
 
   render() {
@@ -52,12 +55,16 @@ class App extends React.Component {
         <Route
           path="/create"
           exact
-          render={props => <Form {...props} addFriend={this.addFriend} />}
+          render={props => <AddFriend {...props} addFriend={this.addFriend} />}
         />
         <Route
           path="/"
           render={props => (
-            <FriendsList {...props} friends={this.state.friends} />
+            <FriendsList
+              {...props}
+              friends={this.state.friends}
+              saveFriend={this.saveFriend}
+            />
           )}
         />
       </div>
