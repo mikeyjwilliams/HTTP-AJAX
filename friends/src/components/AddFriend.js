@@ -1,24 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { makeStyles } from '@material-ui/core/styles';
-
-// const useStyles = makeStyles({
-//   card: {
-//     minWidth: 275
-//   },
-//   bullet: {
-//     display: 'inline-block',
-//     margin: '0 2px',
-//     transform: 'scale(0.8)'
-//   },
-//   title: {
-//     fontSize: 18
-//   },
-//   pos: {
-//     marginBottom: 12
-//   }
-// });
 
 class Form extends React.Component {
   constructor(props) {
@@ -48,7 +30,7 @@ class Form extends React.Component {
     const target = e.target;
     let value = target.value;
     let name = target.name;
-    if (name === 'price') {
+    if (name === 'age') {
       value = parseInt(value, 10);
     }
     this.setState(prevState => ({
@@ -60,7 +42,6 @@ class Form extends React.Component {
   };
 
   render() {
-    // const jsClasses = useStyles;
     const { name, age, email } = this.state;
     return (
       <Card className={`mdc-card`}>
