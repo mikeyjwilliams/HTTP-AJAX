@@ -3,22 +3,22 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
-  card: {
-    minWidth: 275
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)'
-  },
-  title: {
-    fontSize: 18
-  },
-  pos: {
-    marginBottom: 12
-  }
-});
+// const useStyles = makeStyles({
+//   card: {
+//     minWidth: 275
+//   },
+//   bullet: {
+//     display: 'inline-block',
+//     margin: '0 2px',
+//     transform: 'scale(0.8)'
+//   },
+//   title: {
+//     fontSize: 18
+//   },
+//   pos: {
+//     marginBottom: 12
+//   }
+// });
 
 class Form extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class Form extends React.Component {
 
   submitHandler = e => {
     e.preventDefault();
-    this.props.addItem(this.state.item);
+    this.props.addFriend(this.state.item);
     this.setState({
       item: {
         name: '',
@@ -45,7 +45,6 @@ class Form extends React.Component {
   };
 
   changeHandler = e => {
-    console.log(e.target.value);
     const target = e.target;
     let value = target.value;
     let name = target.name;
@@ -61,10 +60,10 @@ class Form extends React.Component {
   };
 
   render() {
-    const jsClasses = useStyles;
+    // const jsClasses = useStyles;
     const { name, age, email } = this.state;
     return (
-      <Card className={`${jsClasses.card} mdc-card`}>
+      <Card className={`mdc-card`}>
         <CardContent>
           <form className="form input" onSubmit={this.submitHandler}>
             <input
