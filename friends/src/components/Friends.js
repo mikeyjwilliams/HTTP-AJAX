@@ -23,8 +23,8 @@ const Friends = props => {
             <Typography component="h4" variant="h5">
               {props.friend.email}
             </Typography>
-            <button type="button" onClick={props.saveFriend}>
-              Save
+            <button type="button" onClick={props.editFriend}>
+              Edit
             </button>
             <button type="button">X</button>
           </div>
