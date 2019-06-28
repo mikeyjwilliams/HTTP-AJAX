@@ -56,6 +56,13 @@ class App extends React.Component {
         </div>
 
         <Route
+          path="/edit/:id"
+          exact
+          render={props => (
+            <EditFriend {...props} editFriend={this.editFriend} />
+          )}
+        />
+        <Route
           path="/create"
           exact
           render={props => <AddFriend {...props} addFriend={this.addFriend} />}
