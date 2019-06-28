@@ -7,7 +7,11 @@ export default function FriendsList(props) {
       {props.friends.length > 0 ? (
         props.friends.map(friend => {
           return (
-            <Friends key={friend.id} friend={friend} addItem={props.addItem} />
+            <Friends
+              key={friend.id}
+              friend={friend}
+              saveFriend={props.saveFriend}
+            />
           );
         })
       ) : (
