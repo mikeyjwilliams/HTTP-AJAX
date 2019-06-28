@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
@@ -10,16 +11,23 @@ class EditFriend extends React.Component {
       friend: {
         name: '',
         age: '',
-        email: '',
-        errorMessage: null
+        email: ''
       }
     };
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
+    const id = Number(this.props.match.params.id);
 
-    console.log('id', id, typeof id);
+    axios
+      .get(`http://localhost:friends/${id}`)
+      .then(res => {
+        const { name, age, email } = res.data;
+        this.setState({ name, age, email });
+      })
+      .catch(err => {
+        console.log(err.Error);
+      });
 
     // grab id off url
     // get request for list of friends
@@ -33,6 +41,8 @@ class EditFriend extends React.Component {
       <Card className={`mdc-card`}>
         <CardContent>
           <form className="form input" onSubmit={this.submitHandler}>
+            {' '}
+            {/* post  handler onSubmit */}
             <input
               type="text"
               name="name"
@@ -41,7 +51,6 @@ class EditFriend extends React.Component {
               className="name-input input"
               value={name}
             />
-
             <input
               type="number"
               name="age"
@@ -50,7 +59,6 @@ class EditFriend extends React.Component {
               className="age-input input"
               value={age}
             />
-
             <input
               type="email"
               name="email"
@@ -59,7 +67,6 @@ class EditFriend extends React.Component {
               className="email-input input"
               value={email}
             />
-
             <button type="submit" className="submit-button">
               Create Friend
             </button>
