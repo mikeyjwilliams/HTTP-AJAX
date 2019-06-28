@@ -10,7 +10,7 @@ export default function FriendsList(props) {
             <Friends
               key={friend.id}
               friend={friend}
-              saveFriend={props.saveFriend}
+              editFriend={props.editFriend}
             />
           );
         })
