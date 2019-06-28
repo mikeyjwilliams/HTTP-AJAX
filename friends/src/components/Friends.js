@@ -34,11 +34,11 @@ const Friends = props => {
   );
 };
 
-// Friends.propTypes = {
-//   friend: PropTypes.shape({
-//     name: PropTypes.string,
-//     age: PropTypes.number,
-//     email: PropTypes.string
-//   })
-// };
+Friends.propTypes = {
+  friend: PropTypes.shape({
+    name: PropTypes.string,
+    age: PropTypes.number,
+    email: PropTypes.string
+  })
+};
 export default Friends;
