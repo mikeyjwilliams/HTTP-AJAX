@@ -35,8 +35,11 @@ class App extends React.Component {
       .catch(error => console.log(error));
   };
 
-  saveFriend = e => {
-    console.log(e.target.value);
+  saveFriend = id => {
+    axios
+      .put(`http://localhost:5000/friends/:${id}`)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
   };
 
   render() {
