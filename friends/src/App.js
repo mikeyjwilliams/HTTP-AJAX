@@ -4,7 +4,7 @@ import { NavLink, Route } from 'react-router-dom';
 
 import AddFriend from './components/AddFriend';
 import FriendsList from './components/FriendsList';
-import EditFriend from './components/EditFriend';
+import CreateFriend from './components/CreateFriend';
 
 import './App.css';
 
@@ -27,22 +27,13 @@ class App extends React.Component {
       });
   }
 
-  addFriend = friend => {
-    axios
-      .post(`http://localhost:5000/friends`, friend)
-      .then(response => {
-        this.setState({ friends: response.data });
-      })
-      .catch(error => console.log(error));
-  };
-
-  editFriend = friends => {
-    console.log(friends);
+  updateFriend = friends => {
+    console.log('STATE ', this.state.friends);
+    this.setState({ friends });
   };
 
   render() {
     const { friends } = this.state;
-
     return (
       <div className="App">
         <h1>Friends List</h1>
@@ -61,13 +52,15 @@ class App extends React.Component {
         <Route
           path="/edit/:id"
           render={props => (
-            <EditFriend {...props} editFriend={this.editFriend} />
+            <CreateFriend {...props} editFriend={this.editFriend} />
           )}
         />
         <Route
           path="/create"
           exact
-          render={props => <AddFriend {...props} addFriend={this.addFriend} />}
+          render={props => (
+            <AddFriend {...props} updateFriend={this.updateFriend} />
+          )}
         />
         <Route
           path="/"
