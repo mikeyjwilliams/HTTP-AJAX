@@ -1,8 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import EditFriend from './CreateFriend';
 
-class Form extends React.Component {
+class AddFriend extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,16 +16,20 @@ class Form extends React.Component {
     };
   }
 
-  submitHandler = e => {
+  addFriend = e => {
     e.preventDefault();
-    this.props.addFriend(this.state.friend);
-    this.setState({
-      friend: {
-        name: '',
-        age: '',
-        email: ''
-      }
-    });
+    const { name, age, email } = this.state;
+    const friend = { name, age, email };
+    console.log('FRIEND', friend);
+    axios
+      .post(`http://localhost:5000/friends`, friend)
+      .then(response => {
+        //this.setState({ friends: response.data });
+        this.props.updateFriend(response.data);
+
+        this.props.history.push('/');
+      })
+      .catch(error => console.log(error));
   };
 
   changeHandler = e => {
@@ -33,12 +39,9 @@ class Form extends React.Component {
     if (name === 'age') {
       value = parseInt(value, 10);
     }
-    this.setState(prevState => ({
-      friend: {
-        ...prevState.friend,
-        [name]: value
-      }
-    }));
+    this.setState({
+      [name]: value
+    });
   };
 
   render() {
@@ -46,7 +49,7 @@ class Form extends React.Component {
     return (
       <Card className={`mdc-card`}>
         <CardContent>
-          <form className="form input" onSubmit={this.submitHandler}>
+          <form className="form input" onSubmit={this.addFriend}>
             <input
               type="text"
               name="name"
@@ -83,4 +86,4 @@ class Form extends React.Component {
     );
   }
 }
-export default Form;
+export default AddFriend;
