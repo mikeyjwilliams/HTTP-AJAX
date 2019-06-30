@@ -2,46 +2,43 @@ import React from 'react';
 import axios from 'axios';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import EditFriend from './CreateFriend';
 
 class AddFriend extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      friend: {
-        name: '',
-        age: '',
-        email: ''
-      }
+      name: '',
+      age: '',
+      email: '',
+      errorMessage: null
     };
   }
+
+  changeHandler = e => {
+    let val = e.target.value;
+    if (e.target.name === 'age') {
+      val = Number(e.target.value);
+    }
+    this.setState({
+      [e.target.name]: val
+    });
+  };
 
   addFriend = e => {
     e.preventDefault();
     const { name, age, email } = this.state;
     const friend = { name, age, email };
-    console.log('FRIEND', friend);
     axios
       .post(`http://localhost:5000/friends`, friend)
       .then(response => {
-        //this.setState({ friends: response.data });
         this.props.updateFriend(response.data);
+        console.log('response.data ', response.data);
 
-        this.props.history.push('/');
+        // this.props.history.push('/');
       })
-      .catch(error => console.log(error));
-  };
-
-  changeHandler = e => {
-    const target = e.target;
-    let value = target.value;
-    let name = target.name;
-    if (name === 'age') {
-      value = parseInt(value, 10);
-    }
-    this.setState({
-      [name]: value
-    });
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   render() {
@@ -57,6 +54,7 @@ class AddFriend extends React.Component {
               placeholder="Name..."
               className="name-input input"
               value={name}
+              required
             />
 
             <input
@@ -66,6 +64,7 @@ class AddFriend extends React.Component {
               placeholder="Age..."
               className="age-input input"
               value={age}
+              required
             />
 
             <input
@@ -75,6 +74,7 @@ class AddFriend extends React.Component {
               placeholder="Email..."
               className="email-input input"
               value={email}
+              required
             />
 
             <button type="submit" className="submit-button">
