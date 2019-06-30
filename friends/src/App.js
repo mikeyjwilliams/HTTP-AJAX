@@ -7,6 +7,7 @@ import FriendsList from './components/FriendsList';
 import CreateFriend from './components/CreateFriend';
 
 import './App.css';
+import UpdateFriend from './components/UpdateFriend';
 
 class App extends React.Component {
   constructor() {
@@ -28,8 +29,8 @@ class App extends React.Component {
   }
 
   updateFriend = friends => {
-    console.log('STATE ', this.state.friends);
     this.setState({ friends });
+    console.log('STATE ', this.state.friends);
   };
 
   render() {
@@ -42,17 +43,18 @@ class App extends React.Component {
             Home
           </NavLink>
           <NavLink to="/create" className="nav">
-            New Friend
-          </NavLink>
-          <NavLink to="/" className="nav">
-            Edit User
+            Create Friend
           </NavLink>
         </div>
 
         <Route
           path="/edit/:id"
           render={props => (
-            <CreateFriend {...props} editFriend={this.editFriend} />
+            <CreateFriend
+              {...props}
+              friends={friends}
+              editFriend={this.editFriend}
+            />
           )}
         />
         <Route
@@ -60,6 +62,13 @@ class App extends React.Component {
           exact
           render={props => (
             <AddFriend {...props} updateFriend={this.updateFriend} />
+          )}
+        />
+        <Route
+          path="/edit/:id"
+          exact
+          render={props => (
+            <UpdateFriend {...props} updateFriend={this.updateFriend} />
           )}
         />
         <Route
