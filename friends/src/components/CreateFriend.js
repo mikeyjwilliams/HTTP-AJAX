@@ -4,29 +4,30 @@ import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
-class EditFriend extends React.Component {
+class CreateFriend extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      friend: {
-        name: '',
-        age: '',
-        email: ''
-      }
+      name: '',
+      age: '',
+      email: ''
     };
   }
 
   componentDidMount() {
-    const id = Number(this.props.match.params.id);
+    // const id = this.props.friends.find(
+    //   key => Number(key.id) === Number(this.props.match.params.id)
+    // );
+
+    //const id = Number(this.props.match.params.id);
 
     axios
-      .get(`http://localhost:friends/${id}`)
+      .get(`http://localhost:/friends/`)
       .then(res => {
-        const { name, age, email } = res.data;
-        this.setState({ name, age, email });
+        console.log('res', res, typeof res);
       })
       .catch(err => {
-        console.log(err.Error);
+        console.log(err);
       });
 
     // grab id off url
@@ -68,7 +69,7 @@ class EditFriend extends React.Component {
               value={email}
             />
             <button type="submit" className="submit-button">
-              Create Friend
+              {/* <Link to={`/edit/${id}`}> Create Friend</Link> */}
             </button>
           </form>
         </CardContent>
@@ -76,4 +77,4 @@ class EditFriend extends React.Component {
     );
   }
 }
-export default EditFriend;
+export default CreateFriend;
