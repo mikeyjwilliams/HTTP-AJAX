@@ -22,14 +22,16 @@ class CreateFriend extends React.Component {
     //const id = Number(this.props.match.params.id);
 
     axios
+
       .get(`http://localhost:/friends/`)
       .then(res => {
         console.log('res', res, typeof res);
+
       })
       .catch(err => {
         console.log(err);
       });
-
+      console.log(this.state.item);
     // grab id off url
     // get request for list of friends
     // loop through list of friends  for matching id.matching id from line 10
