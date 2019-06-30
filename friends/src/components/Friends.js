@@ -5,6 +5,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 import Typography from '@material-ui/core/Typography';
+import CreateFriend from './CreateFriend';
+import { Link } from 'react-router-dom';
 
 const Friends = props => {
   return (
@@ -23,9 +25,11 @@ const Friends = props => {
             <Typography component="h4" variant="h5">
               {props.friend.email}
             </Typography>
-            <button type="button" onClick={props.editFriend}>
-              Edit
-            </button>
+            <Link to="/create/:id">
+              <button type="button" onClick={props.updateFriend}>
+                Edit
+              </button>
+            </Link>
             <button type="button">X</button>
           </div>
         </div>
