@@ -5,10 +5,9 @@ export default function FriendsList(props) {
   console.log('Friend data', props.friends);
   return (
     <div>
-      {/* {props.friends.map(friend => {
-      return <Friend key={friend.id} friend={friend} />
-    })} */}
-      <h1>Friend test item</h1>
+      {props.friends.map(friend => {
+        return <Friend key={friend.id} friend={friend} />;
+      })}
     </div>
   );
 }
