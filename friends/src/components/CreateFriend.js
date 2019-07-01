@@ -30,6 +30,21 @@ class CreateFriend extends React.Component {
           placeholder="Name..."
           onChange={this.changeHandler}
         />
+        <input
+          type="number"
+          name="age"
+          value={age}
+          placeholder="age.."
+          onChange={this.changeHandler}
+        />
+        <input
+          type="text"
+          name="email"
+          value={email}
+          placeholder="email"
+          onChange={this.changeHandler}
+        />
+        <button type="submit">Create Friend</button>
       </form>
     );
   }
