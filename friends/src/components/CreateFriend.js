@@ -12,6 +12,13 @@ class CreateFriend extends React.Component {
     };
   }
 
+  changeHandler = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+    console.log(this.state.name);
+  };
+
   render() {
     const { name, age, email } = this.state;
     return (
@@ -20,9 +27,12 @@ class CreateFriend extends React.Component {
           type="text"
           name="name"
           value={name}
-          onChange={this.eventHandler}
+          placeholder="Name..."
+          onChange={this.changeHandler}
         />
       </form>
     );
   }
 }
+
+export default CreateFriend;
