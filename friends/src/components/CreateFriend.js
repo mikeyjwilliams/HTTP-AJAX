@@ -16,13 +16,28 @@ class CreateFriend extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state.name);
+  };
+
+  buildFriend = e => {
+    e.preventDefault();
+
+    const { name, age, email } = this.state;
+    const friend = { name, age, email };
+
+    axios
+      .post('http://localhost:5000/friends', friend)
+      .then(res => {
+        this.props.updateFriendsList(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
     const { name, age, email } = this.state;
     return (
-      <form onSubmit={this.props.createUser}>
+      <form onSubmit={this.buildFriend}>
         <input
           type="text"
           name="name"
