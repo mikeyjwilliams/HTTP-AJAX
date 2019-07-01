@@ -1,10 +1,14 @@
 import React from 'react';
+import Friend from './Friend';
 
 export default function FriendsList(props) {
   console.log('Friend data', props.friends);
   return (
     <div>
-      <h2>Friends list</h2>
+      {/* {props.friends.map(friend => {
+      return <Friend key={friend.id} friend={friend} />
+    })} */}
+      <h1>Friend test item</h1>
     </div>
   );
 }
