@@ -32,10 +32,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="nav-section">Friends</div>
+        <div className="nav-section center-text">Friends</div>
         <header className="App-header" />
         <h2>Friends List</h2>
-        <FriendsList friends={this.state.friends} />
+        <FriendsList friends={this.state.friends} className="center-text" />
       </div>
     );
   }
