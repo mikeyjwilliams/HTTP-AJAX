@@ -37,7 +37,7 @@ class CreateFriend extends React.Component {
   render() {
     const { name, age, email } = this.state;
     return (
-      <form onSubmit={this.buildFriend}>
+      <form onSubmit={this.buildFriend} className="form">
         <input
           type="text"
           name="name"
