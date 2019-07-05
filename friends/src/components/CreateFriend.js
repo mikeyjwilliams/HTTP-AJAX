@@ -22,7 +22,8 @@ class CreateFriend extends React.Component {
     e.preventDefault();
 
     const { name, age, email } = this.state;
-    const friend = { name, age, email };
+    const numAge = Number(age);
+    const friend = { name, numAge, email };
 
     axios
       .post('http://localhost:5000/friends', friend)
