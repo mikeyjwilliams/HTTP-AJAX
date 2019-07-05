@@ -4,6 +4,7 @@ import { NavLink, Link, Route } from 'react-router-dom';
 import FriendsList from './components/FriendsList';
 import CreateFriend from './components/CreateFriend';
 import './App.css';
+import UpdateUser from './components/UpdateUser';
 
 class App extends React.Component {
   constructor() {
@@ -55,6 +56,12 @@ class App extends React.Component {
           exact
           render={props => (
             <FriendsList {...props} friends={this.state.friends} />
+          )}
+        />
+        <Route
+          path="/create/:id"
+          render={props => (
+            <UpdateUser {...props} updateFriendsList={this.updateFriendsList} />
           )}
         />
         <Route
