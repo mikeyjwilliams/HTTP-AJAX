@@ -2,9 +2,9 @@ import React from 'react';
 import Friend from './Friend';
 
 export default function FriendsList(props) {
-  console.log('Friend data', props.friends);
   return (
     <div>
+      <h2 className="text-center">Friends List</h2>
       {props.friends.length > 0 ? (
         props.friends.map(friend => {
           return <Friend key={friend.id} friend={friend} />;
