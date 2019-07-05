@@ -15,6 +15,12 @@
   
 }
 
+.form {
+  padding-top: 1.5em;
+  width: 45%;
+  margin: 0 auto;
+}
+
 .text-center {
   text-align: center;
 }
