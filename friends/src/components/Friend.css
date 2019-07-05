@@ -7,3 +7,11 @@
     align-self: center;
     margin-right: 2em;
 }
+
+.update-section {
+    display: flex;
+    align-items: center;
+}
+.update-left {
+    margin-left: 1.5em;
+}
