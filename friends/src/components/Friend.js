@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Friend.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +8,12 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 const edit = <FontAwesomeIcon icon={faEdit} size="2x" />;
 
 export default function Friend(props) {
+  // const friends = props.friend[0];
+  // const findFriend = friends.filter(
+  //   friend => friend.id === props.params.match.id
+  // );
+  console.log('findFriend ', props.friend);
+
   return (
     <section className="info-section">
       <div className="vert-center">
@@ -17,7 +24,13 @@ export default function Friend(props) {
         <p className="friend-email">{props.friend.email}</p>
       </div>
       <div className="update-section">
-        <div>{edit}</div>
+        <Link
+          to={`/create/`}
+          onClick={props.editFriend}
+          className="update-left"
+        >
+          {edit}
+        </Link>
       </div>
     </section>
   );
