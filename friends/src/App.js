@@ -48,7 +48,7 @@ class App extends React.Component {
         </div>
 
         <Route
-          path="/edit/:id"
+          path="/update/:id"
           render={props => (
             <CreateFriend
               {...props}

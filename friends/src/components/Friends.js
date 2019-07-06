@@ -25,7 +25,7 @@ const Friends = props => {
             <Typography component="h4" variant="h5">
               {props.friend.email}
             </Typography>
-            <Link to="/create/:id">
+            <Link to={`/edit/${id}`}>
               <button type="button" onClick={props.updateFriend}>
                 Edit
               </button>
