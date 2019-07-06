@@ -5,38 +5,46 @@ class CreateFriend extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      age: 0,
-      email: '',
-      errorMessage: null
+      friend:{
+        name: '',
+        age: 0,
+        email: '',
+        errorMessage: null
+      }
+     
     };
   }
-
   changeHandler = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+     
     });
-  };
+    console.log("value", e.target.value)
+    e.preventDefault();
+  }:
 
-  buildFriend = e => {
+  buildFriend (e) => {
     e.preventDefault();
 
-    const { name, age, email } = this.state;
+    const { name, age, email } = this.state.friend;
     const numAge = Number(age);
-    const friend = { name, numAge, email };
-
+    const theFriend = { name, numAge, email };
+    
     axios
-      .post('http://localhost:5000/friends', friend)
-      .then(res => {
-        this.props.updateFriendsList(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    .post('http://localhost:5000/friends', theFriend)
+    .then(res => {
+      this.props.updateFriendsList(res.data);
+  
+      
+    })
+    .catch(err => {
+      console.log(err);
+    });    
   };
 
+
   render() {
-    const { name, age, email } = this.state;
+    const { name, age, email } = this.state.friend;
     return (
       <form onSubmit={this.buildFriend} className="form">
         <input
@@ -60,7 +68,7 @@ class CreateFriend extends React.Component {
           placeholder="email"
           onChange={this.changeHandler}
         />
-        <button type="submit">Create Friend</button>
+        <button onSubmit={this.buildFriend} type="submit">Create Friend</button>
       </form>
     );
   }
