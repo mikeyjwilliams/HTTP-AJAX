@@ -40,7 +40,20 @@ class UpdateUser extends React.Component {
   editFriend = e => {
     e.preventDefault();
     const id = this.props.match.params.id;
-    console.log(id);
+
+    const { name, email } = this.state;
+    const age = Number(this.state.age);
+    const updateFriend = { name, age, email };
+
+    axios
+      .put(`http://localhost:5000/friends/${id}`, updateFriend)
+      .then(response => {
+        console.log(response.data);
+        this.props.updateFriendsList(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   handleChange = e => {
