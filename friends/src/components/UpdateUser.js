@@ -7,17 +7,30 @@ class UpdateUser extends React.Component {
     this.state = {
       name: '',
       age: '',
-      email: ''
+      email: '',
+      friends: []
     };
   }
-  componentDidMount() {
-    const findFriend = this.props.match.params.id;
 
+  // put is for existing data and post is for new data!!!!
+
+  componentDidMount() {
     axios
-      .get(`http:/localhost:3000/friend/${findFriend}`)
+      .get(`http://localhost:5000/friends/`)
       .then(response => {
-        const { name, age, email } = response.data;
-        this.setState({ name, age, email });
+        console.log(response.data);
+        this.setState({ friends: response.data });
+
+        const findFriend = this.state.friends.find(
+          friend => friend.id === Number(this.props.match.params.id)
+        );
+        if (findFriend === undefined) {
+          console.log('lost found', undefined);
+        } else {
+          console.log('found', findFriend);
+          const { name, age, email } = findFriend;
+          this.setState({ name, age, email });
+        }
       })
       .catch(err => {
         console.log(err);
@@ -25,13 +38,13 @@ class UpdateUser extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const { name, age, email } = this.state;
     return (
       <div>
         <h2>{name}</h2>
         <h3>{age}</h3>
         <h3>{email}</h3>
+        <div />
       </div>
     );
   }

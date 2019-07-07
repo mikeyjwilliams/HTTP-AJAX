@@ -12,7 +12,8 @@ export default function Friend(props) {
   // const findFriend = friends.filter(
   //   friend => friend.id === props.params.match.id
   // );
-  console.log('findFriend ', props.friend);
+  const id = props.friend.id;
+  console.log('findFriend ', props.friend.id);
 
   return (
     <section className="info-section">
@@ -25,7 +26,7 @@ export default function Friend(props) {
       </div>
       <div className="update-section">
         <Link
-          to={`/create/`}
+          to={`/friend/${id}`}
           onClick={props.editFriend}
           className="update-left"
         >
