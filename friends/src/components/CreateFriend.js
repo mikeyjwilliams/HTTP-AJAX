@@ -5,43 +5,38 @@ class CreateFriend extends React.Component {
   constructor() {
     super();
     this.state = {
-      friend:{
+      friend: {
         name: '',
         age: 0,
         email: '',
         errorMessage: null
       }
-     
     };
   }
   changeHandler = e => {
     this.setState({
-      [e.target.name]: e.target.value,
-     
+      [e.target.name]: e.target.value
     });
-    console.log("value", e.target.value)
+    console.log('value', e.target.value);
     e.preventDefault();
-  }:
+  };
 
-  buildFriend (e) => {
+  buildFriend = e => {
     e.preventDefault();
 
     const { name, age, email } = this.state.friend;
     const numAge = Number(age);
     const theFriend = { name, numAge, email };
-    
-    axios
-    .post('http://localhost:5000/friends', theFriend)
-    .then(res => {
-      this.props.updateFriendsList(res.data);
-  
-      
-    })
-    .catch(err => {
-      console.log(err);
-    });    
-  };
 
+    axios
+      .post('http://localhost:5000/friends', theFriend)
+      .then(res => {
+        this.props.updateFriendsList(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   render() {
     const { name, age, email } = this.state.friend;
@@ -68,7 +63,9 @@ class CreateFriend extends React.Component {
           placeholder="email"
           onChange={this.changeHandler}
         />
-        <button onSubmit={this.buildFriend} type="submit">Create Friend</button>
+        <button onSubmit={this.buildFriend} type="submit">
+          Create Friend
+        </button>
       </form>
     );
   }
