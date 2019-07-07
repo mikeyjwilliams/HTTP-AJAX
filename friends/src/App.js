@@ -16,10 +16,10 @@ class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`http://localhost:5000/friends`)
+      .get(`http://localhost:5000/friends/`)
       .then(res => {
         this.setState({ friends: res.data });
-        console.log(res.data);
+        //  console.log(res.data);
       })
       .catch(err => {
         console.log(err);
@@ -32,7 +32,6 @@ class App extends React.Component {
 
   updateFriendsList = friends => {
     this.setState({ friends });
-    console.log('AFTER update', this.state.friends);
   };
 
   render() {
@@ -59,9 +58,13 @@ class App extends React.Component {
           )}
         />
         <Route
-          path="/create/:id"
+          path={`/friend/:id`}
           render={props => (
-            <UpdateUser {...props} updateFriendsList={this.updateFriendsList} />
+            <UpdateUser
+              {...props}
+              updateFriendsList={this.updateFriendsList}
+              friends={this.state.friends}
+            />
           )}
         />
         <Route
