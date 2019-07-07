@@ -5,12 +5,10 @@ class CreateFriend extends React.Component {
   constructor() {
     super();
     this.state = {
-      friend: {
-        name: '',
-        age: 0,
-        email: '',
-        errorMessage: null
-      }
+      name: '',
+      age: 0,
+      email: '',
+      errorMessage: null
     };
   }
   changeHandler = e => {
@@ -24,9 +22,10 @@ class CreateFriend extends React.Component {
   buildFriend = e => {
     e.preventDefault();
 
-    const { name, age, email } = this.state.friend;
-    const numAge = Number(age);
-    const theFriend = { name, numAge, email };
+    const { name, email } = this.state;
+    const age = Number(this.state.age);
+
+    const theFriend = { name, age, email };
 
     axios
       .post('http://localhost:5000/friends', theFriend)
@@ -39,7 +38,7 @@ class CreateFriend extends React.Component {
   };
 
   render() {
-    const { name, age, email } = this.state.friend;
+    const { name, age, email } = this.state;
     return (
       <form onSubmit={this.buildFriend} className="form">
         <input
