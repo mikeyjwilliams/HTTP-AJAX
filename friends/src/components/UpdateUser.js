@@ -37,7 +37,13 @@ class UpdateUser extends React.Component {
       });
   }
 
-  onChange = e => {
+  editFriend = e => {
+    e.preventDefault();
+    const id = this.props.match.params.id;
+    console.log(id);
+  };
+
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -48,9 +54,24 @@ class UpdateUser extends React.Component {
     return (
       <div>
         <form className="form" onSubmit={this.editFriend}>
-          <input type="text" onChange={this.onChange} value={name} />
-          <input type="number" onChange={this.onChange} value={age} />
-          <input type="email" onChange={this.onChange} value={email} />
+          <input
+            type="text"
+            onChange={this.handleChange}
+            value={name}
+            name="name"
+          />
+          <input
+            type="number"
+            onChange={this.handleChange}
+            value={age}
+            name="age"
+          />
+          <input
+            type="email"
+            onChange={this.handleChange}
+            value={email}
+            name="email"
+          />
           <button type="submit">Update Friend</button>
         </form>
       </div>
