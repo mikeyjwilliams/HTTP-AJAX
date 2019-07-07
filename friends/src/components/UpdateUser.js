@@ -37,14 +37,22 @@ class UpdateUser extends React.Component {
       });
   }
 
+  onChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   render() {
     const { name, age, email } = this.state;
     return (
       <div>
-        <h2>{name}</h2>
-        <h3>{age}</h3>
-        <h3>{email}</h3>
-        <div />
+        <form className="form" onSubmit={this.editFriend}>
+          <input type="text" onChange={this.onChange} value={name} />
+          <input type="number" onChange={this.onChange} value={age} />
+          <input type="email" onChange={this.onChange} value={email} />
+          <button type="submit">Update Friend</button>
+        </form>
       </div>
     );
   }
