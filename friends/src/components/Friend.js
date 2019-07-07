@@ -8,10 +8,6 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 const edit = <FontAwesomeIcon icon={faEdit} size="2x" />;
 
 export default function Friend(props) {
-  // const friends = props.friend[0];
-  // const findFriend = friends.filter(
-  //   friend => friend.id === props.params.match.id
-  // );
   const id = props.friend.id;
   console.log('findFriend ', props.friend.id);
 
