@@ -12,6 +12,7 @@ export default function FriendsList(props) {
               key={friend.id}
               friend={friend}
               deleteFriend={props.deleteFriend}
+              loseFriend={friend}
             />
           );
         })
