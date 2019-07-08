@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import './Friend.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const edit = <FontAwesomeIcon icon={faEdit} size="2x" />;
+const trash = <FontAwesomeIcon icon={faTrashAlt} size="2x" />;
 
 export default function Friend(props) {
   const id = props.friend.id;
-  console.log('findFriend ', props.friend.id);
 
   return (
     <section className="info-section">
@@ -27,6 +27,9 @@ export default function Friend(props) {
           className="update-left"
         >
           {edit}
+        </Link>
+        <Link to={`/`} onClick={props.deleteFriend} className="update-left">
+          {trash}
         </Link>
       </div>
     </section>
