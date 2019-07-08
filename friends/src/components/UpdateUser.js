@@ -25,9 +25,8 @@ class UpdateUser extends React.Component {
           friend => friend.id === Number(this.props.match.params.id)
         );
         if (findFriend === undefined) {
-          console.log('lost found', undefined);
+          console.log(undefined);
         } else {
-          console.log('found', findFriend);
           const { name, age, email } = findFriend;
           this.setState({ name, age, email });
         }
