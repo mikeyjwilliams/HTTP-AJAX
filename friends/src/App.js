@@ -54,11 +54,16 @@ class App extends React.Component {
           path="/"
           exact
           render={props => (
-            <FriendsList {...props} friends={this.state.friends} />
+            <FriendsList
+              {...props}
+              friends={this.state.friends}
+              deleteFriend={this.deleteFriend}
+            />
           )}
         />
         <Route
           path={`/friend/:id`}
+          exact
           render={props => (
             <UpdateUser
               {...props}
