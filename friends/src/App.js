@@ -57,7 +57,8 @@ class App extends React.Component {
             <FriendsList
               {...props}
               friends={this.state.friends}
-              deleteFriend={this.deleteFriend}
+              // delete={this.delete}
+              loseFriend={this.state.friends}
             />
           )}
         />
