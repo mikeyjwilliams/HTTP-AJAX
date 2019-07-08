@@ -9,8 +9,26 @@ const edit = <FontAwesomeIcon icon={faEdit} size="2x" />;
 const trash = <FontAwesomeIcon icon={faTrashAlt} size="2x" />;
 
 export default function Friend(props) {
-  const id = props.friend.id;
+  const deleteFriend = props => {
+    console.log(props.loseFriend);
+    // const findFriend = props.loseFriend.find(
+    //   friend => friend.id === Number(props.loseFriend.match.params.id)
+    // );
+    // if (findFriend === undefined) {
+    //   console.log(undefined);
+    // } else {
+    //   // const { name, age, email } = findFriend;
+    //   // this.setState({ name, age, email });
+    //   // console.log('FRIEND', this.state.friend);
+    //   console.log('FRIEND ID ', findFriend);
+    // }
+    // // console.log(this.state.friends.id);
+    // console.log('friend id ', props.friend.id);
+  };
+  const friendsArr = props.loseFriend[0];
 
+  const id = props.friend.id;
+  console.log(friendsArr);
   return (
     <section className="info-section">
       <div className="vert-center">
@@ -28,7 +46,7 @@ export default function Friend(props) {
         >
           {edit}
         </Link>
-        <Link to={`/`} onClick={props.deleteFriend} className="update-left">
+        <Link to={`/`} onClick={deleteFriend} className="update-left">
           {trash}
         </Link>
       </div>
