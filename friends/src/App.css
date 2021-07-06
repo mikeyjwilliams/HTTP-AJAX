@@ -1,0 +1,43 @@
+.App {
+  text-align: center;
+}
+.friends-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.center-vert {
+  align-self: center;
+  margin-right: 5%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.input {
+  margin-bottom: 15px;
+  align-self: center;
+}
+
+.age-input {
+  width: inherit;
+}
+
+.submit-button {
+  margin: 0 auto;
+  width: 250px;
+}
+
+.nav-section {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+.nav {
+  margin-right: 25px;
+
+}
